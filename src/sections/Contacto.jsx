@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Gracias from './Gracias';
+import Gracias from "../componentes/Gracias";
+
 
 function Contacto() {
   const [formData, setFormData] = useState({

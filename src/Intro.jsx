@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './glitch.css';
-import logo from './assets/logo-candela.svg';
-
+import './styles/glitch.css';
 
 const letras = ['C', 'A', 'N', 'D', 'E', 'L', 'A'];
 
@@ -12,14 +10,18 @@ function Intro({ onFinish }) {
 
   useEffect(() => {
     const logoDelay = setTimeout(() => setShowLogo(true), 2400);
-    const hideIntro = setTimeout(() => {
+
+    const hideDelay = setTimeout(() => {
+      console.log("✅ Intro terminada, ejecutando onFinish()");
       setIsVisible(false);
-      onFinish();
+      if (typeof onFinish === "function") {
+        onFinish();
+      }
     }, 4000);
 
     return () => {
       clearTimeout(logoDelay);
-      clearTimeout(hideIntro);
+      clearTimeout(hideDelay);
     };
   }, [onFinish]);
 
@@ -30,7 +32,7 @@ function Intro({ onFinish }) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="fixed inset-0 glitch-bg flex flex-col items-center justify-center z-50"
+          className="fixed inset-0 glitch-bg flex flex-col items-center justify-center z-50 bg-black"
         >
           <motion.div className="flex space-x-2 text-white text-5xl font-extrabold tracking-widest mb-4">
             {letras.map((letra, i) => (
@@ -47,19 +49,18 @@ function Intro({ onFinish }) {
 
           {showLogo && (
             <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: [0, 1.2, 1], opacity: 1 }}
-                transition={{ duration: 1 }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: [0, 1.2, 1], opacity: 1 }}
+              transition={{ duration: 1 }}
             >
-                <img
-                src={logo}
+              <img
+                src="src/assets/logo-candela.svg"
                 alt="Logo Candela"
                 className="w-20 h-20"
                 style={{ filter: 'invert(1)' }}
-                />
+              />
             </motion.div>
-            )}
-
+          )}
         </motion.div>
       )}
     </AnimatePresence>
