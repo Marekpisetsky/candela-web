@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './styles/glitch.css';
+import logo from './assets/logo-candela.svg';
 
 const letras = ['C', 'A', 'N', 'D', 'E', 'L', 'A'];
 
@@ -54,7 +55,7 @@ function Intro({ onFinish }) {
               transition={{ duration: 1 }}
             >
              <img
-                src="/src/assets/logo-candela.svg"
+                src={logo}
                 alt="Logo Candela"
                 className="w-20 h-20"
                 style={{ filter: 'invert(1)' }}
