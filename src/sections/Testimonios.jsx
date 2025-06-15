@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { testimonios } from '../data/testimonios';
+import { testimonios } from '../data/Testimonios';
 
 function Testimonios() {
   const [index, setIndex] = useState(0);
