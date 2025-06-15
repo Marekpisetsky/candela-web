@@ -59,7 +59,7 @@ export default function Catalog() {
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-[90%] sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto overflow-x-auto sm:overflow-visible"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

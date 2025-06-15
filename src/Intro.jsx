@@ -53,8 +53,8 @@ function Intro({ onFinish }) {
               animate={{ scale: [0, 1.2, 1], opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <img
-                src="src/assets/logo-candela.svg"
+             <img
+                src="/src/assets/logo-candela.svg"
                 alt="Logo Candela"
                 className="w-20 h-20"
                 style={{ filter: 'invert(1)' }}
