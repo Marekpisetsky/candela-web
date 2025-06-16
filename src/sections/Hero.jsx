@@ -2,10 +2,12 @@ import { motion } from 'framer-motion';
 
 function Hero() {
   return (
-    <motion.section id="inicio"
+    <motion.section
+      id="inicio"
       className="scroll-mt-24 text-center py-24 px-4 bg-white text-gray-900"
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       <h2 className="text-4xl md:text-5xl font-extrabold mb-4">

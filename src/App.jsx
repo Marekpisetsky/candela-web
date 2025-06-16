@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import Catalog from "./sections/Catalog";
+import Proposito from "./sections/Proposito";
+import Valores from "./sections/Valores";
+import Vision from "./sections/Vision";
+import CierreCTA from "./sections/CierreCTA";
 
 // Componentes globales
 import Navbar from "./componentes/Navbar";
@@ -32,15 +36,13 @@ function App() {
           <Hero />
           <Servicios />
           <Nosotros />
+          <Proposito />
+          <Valores />
+          <Vision />
           <Testimonios />
-          <Contacto />
-
-          <main className="flex items-center justify-center h-[60vh] bg-rose-600 text-white">
-            <h1 className="text-4xl font-bold">¡Candela está viva! 🔥</h1>
-          </main>
-
           <Catalog />
-
+          <Contacto />
+          <CierreCTA />
           <Footer />
           <ScrollToTopButton />
         </>

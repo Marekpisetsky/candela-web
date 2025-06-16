@@ -29,7 +29,7 @@ function Nosotros() {
           className="md:w-1/2"
         >
           <img
-            src="https://images.unsplash.com/photo-1505480449763-1f2d557d7f79?fit=crop&w=800&q=80"
+            src=""
             alt="Equipo de trabajo"
             className="w-full rounded-lg shadow-lg"
           />

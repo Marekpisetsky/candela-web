@@ -1,55 +1,101 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-scroll';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToSection = (id) => {
-    setIsOpen(false);
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 100);
-  };
+  const links = [
+    { name: 'Inicio', to: 'inicio', offset: -80 },
+    { name: 'Servicios', to: 'servicios', offset: -80 },
+    { name: 'Nosotros', to: 'nosotros', offset: -80 },
+    { name: 'Propósito', to: 'proposito', offset: -60 },
+    { name: 'Valores', to: 'valores', offset: -60 },
+    { name: 'Visión', to: 'vision', offset: -40 },
+    { name: 'Testimonios', to: 'testimonios', offset: -80 },
+    { name: 'Catálogo', to: 'catalog', offset: -80 },
+    { name: 'Contacto', to: 'contacto', offset: -80 }
+  ];
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold text-rose-600">Candela</h1>
 
+        {/* Botón móvil */}
         <button
           className="md:hidden text-rose-600 text-2xl"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen(true)}
           aria-label="Abrir menú"
           aria-expanded={isOpen}
         >
           ☰
         </button>
 
+        {/* Menú escritorio */}
         <ul className="hidden md:flex space-x-6 font-medium text-gray-700">
-          <li><a href="#inicio" className="hover:text-rose-600">Inicio</a></li>
-          <li><a href="#servicios" className="hover:text-rose-600">Servicios</a></li>
-          <li><a href="#nosotros" className="hover:text-rose-600">Nosotros</a></li>
-          <li><a href="#contacto" className="hover:text-rose-600">Contacto</a></li>
+          {links.map((link) => (
+            <li key={link.to}>
+              <Link
+                to={link.to}
+                smooth={true}
+                duration={500}
+                offset={link.offset}
+                className="hover:text-rose-600 cursor-pointer"
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
+      {/* Menú móvil off-canvas */}
       <AnimatePresence>
         {isOpen && (
-          <motion.ul
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white px-4 pb-4 space-y-2 text-gray-700 font-medium overflow-hidden"
-          >
-            <li><button onClick={() => scrollToSection('inicio')} className="hover:text-rose-600">Inicio</button></li>
-            <li><button onClick={() => scrollToSection('servicios')} className="hover:text-rose-600">Servicios</button></li>
-            <li><button onClick={() => scrollToSection('nosotros')} className="hover:text-rose-600">Nosotros</button></li>
-            <li><button onClick={() => scrollToSection('contacto')} className="hover:text-rose-600">Contacto</button></li>
-          </motion.ul>
+          <>
+            {/* Fondo oscuro */}
+            <motion.div
+              className="fixed inset-0 bg-black bg-opacity-50 z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* Panel lateral */}
+            <motion.div
+              className="fixed top-0 right-0 w-64 h-full bg-white z-50 shadow-lg p-6"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.3 }}
+            >
+              <button
+                className="text-rose-600 text-2xl mb-4"
+                onClick={() => setIsOpen(false)}
+                aria-label="Cerrar menú"
+              >
+                ×
+              </button>
+              <ul className="space-y-4 font-medium text-gray-700">
+                {links.map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      smooth={true}
+                      duration={500}
+                      offset={link.offset}
+                      className="hover:text-rose-600 cursor-pointer block"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
