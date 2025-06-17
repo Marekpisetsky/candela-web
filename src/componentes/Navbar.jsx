@@ -7,15 +7,16 @@ function Navbar() {
 
   const links = [
     { name: 'Inicio', to: 'inicio', offset: -80 },
-    { name: 'Servicios', to: 'servicios', offset: -80 },
-    { name: 'Nosotros', to: 'nosotros', offset: -80 },
-    { name: 'Propósito', to: 'proposito', offset: -60 },
-    { name: 'Valores', to: 'valores', offset: -60 },
-    { name: 'Visión', to: 'vision', offset: -40 },
-    { name: 'Testimonios', to: 'testimonios', offset: -80 },
-    { name: 'Catálogo', to: 'catalog', offset: -80 },
-    { name: 'Contacto', to: 'contacto', offset: -80 }
+    { name: 'Servicios', to: 'servicios', offset: -50 },
+    { name: 'Nosotros', to: 'nosotros', offset: -50 },
+    { name: 'Propósito', to: 'proposito', offset: -50 },
+    { name: 'Valores', to: 'valores', offset: -50 },
+    { name: 'Visión', to: 'vision', offset: -50 },
+    { name: 'Testimonios', to: 'testimonios', offset: -100 },
+    { name: 'Catálogo', to: 'catalog', offset: -50 },
+    { name: 'Contacto', to: 'contacto', offset: -50 },
   ];
+
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
