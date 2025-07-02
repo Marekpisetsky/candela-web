@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import ProductCard from "../componentes/ProductCard";
-import ProductModal from "../componentes/ProductModal";
-import { products } from "../data/products";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import ProductCard from '../componentes/ProductCard';
+import ProductModal from '../componentes/ProductModal';
+import { products } from '../data/products';
 
 export default function Catalog() {
-  const [selectedScent, setSelectedScent] = useState("Todos");
+  const [selectedScent, setSelectedScent] = useState('Todos');
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const uniqueScents = [
-    "Todos",
-    ...Array.from(new Set(products.map((p) => p.scent)))
+    'Todos',
+    ...Array.from(new Set(products.map((p) => p.scent))),
   ];
 
   const filteredProducts =
-    selectedScent === "Todos"
+    selectedScent === 'Todos'
       ? products
       : products.filter((p) => p.scent === selectedScent);
 
@@ -49,9 +49,11 @@ export default function Catalog() {
             key={scent}
             onClick={() => setSelectedScent(scent)}
             className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors duration-200
-              ${selectedScent === scent
-                ? "bg-gray-800 text-white border-gray-800"
-                : "bg-white text-gray-800 border-gray-300 hover:bg-gray-100"}`}
+              ${
+                selectedScent === scent
+                  ? 'bg-gray-800 text-white border-gray-800'
+                  : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'
+              }`}
           >
             {scent}
           </button>
@@ -59,7 +61,7 @@ export default function Catalog() {
       </motion.div>
 
       <motion.div
-       className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -75,7 +77,10 @@ export default function Catalog() {
       </motion.div>
 
       {selectedProduct && (
-        <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+        <ProductModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
       )}
     </motion.section>
   );

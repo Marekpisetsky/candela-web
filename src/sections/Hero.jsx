@@ -19,7 +19,8 @@ function Hero() {
             Energía que transforma.
           </h1>
           <p className="text-lg md:text-xl mb-8 text-gray-700 max-w-md">
-            En Candela creemos en el poder de lo simple, lo claro y lo brillante.
+            En Candela creemos en el poder de lo simple, lo claro y lo
+            brillante.
           </p>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -61,12 +62,16 @@ function Hero() {
             height="10"
             patternUnits="userSpaceOnUse"
           >
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e11d48" strokeWidth="0.5" />
+            <path
+              d="M 10 0 L 0 0 0 10"
+              fill="none"
+              stroke="#e11d48"
+              strokeWidth="0.5"
+            />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
-
     </section>
   );
 }

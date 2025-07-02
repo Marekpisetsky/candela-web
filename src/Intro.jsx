@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 import './styles/glitch.css';
 import logo from './assets/logo-candela.svg';
@@ -14,7 +15,7 @@ function Intro({ onFinish }) {
 
     const hideDelay = setTimeout(() => {
       setIsVisible(false);
-      if (typeof onFinish === "function") {
+      if (typeof onFinish === 'function') {
         onFinish();
       }
     }, 4000);
@@ -53,7 +54,7 @@ function Intro({ onFinish }) {
               animate={{ scale: [0, 1.2, 1], opacity: 1 }}
               transition={{ duration: 1 }}
             >
-             <img
+              <img
                 src={logo}
                 alt="Logo Candela"
                 className="w-20 h-20"
@@ -68,3 +69,7 @@ function Intro({ onFinish }) {
 }
 
 export default Intro;
+
+Intro.propTypes = {
+  onFinish: PropTypes.func.isRequired,
+};

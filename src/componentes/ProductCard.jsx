@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 export default function ProductCard({ product, onClick }) {
   return (
@@ -27,3 +28,16 @@ export default function ProductCard({ product, onClick }) {
     </motion.div>
   );
 }
+
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    scent: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    color: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
+};

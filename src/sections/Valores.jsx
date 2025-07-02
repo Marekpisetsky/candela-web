@@ -5,19 +5,22 @@ function Valores() {
   const valores = [
     {
       icono: <FaFeatherAlt className="text-3xl text-rose-600 mb-3" />,
-      titulo: "Claridad",
-      texto: "Creemos en lo simple, lo esencial y lo comprensible. Cada decisión importa."
+      titulo: 'Claridad',
+      texto:
+        'Creemos en lo simple, lo esencial y lo comprensible. Cada decisión importa.',
     },
     {
       icono: <FaHands className="text-3xl text-rose-600 mb-3" />,
-      titulo: "Compromiso",
-      texto: "Cuidamos lo que creamos. Trabajamos con intención, no por inercia."
+      titulo: 'Compromiso',
+      texto:
+        'Cuidamos lo que creamos. Trabajamos con intención, no por inercia.',
     },
     {
       icono: <FaEye className="text-3xl text-rose-600 mb-3" />,
-      titulo: "Autenticidad",
-      texto: "No prometemos humo. Lo nuestro enciende realidades con propósito."
-    }
+      titulo: 'Autenticidad',
+      texto:
+        'No prometemos humo. Lo nuestro enciende realidades con propósito.',
+    },
   ];
 
   return (
