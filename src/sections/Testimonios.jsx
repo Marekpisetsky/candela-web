@@ -16,7 +16,10 @@ function Testimonios() {
   const current = testimonios[index];
 
   return (
-    <section id="testimonios" className="scroll-mt-24 bg-white relative py-24 px-4 text-gray-900">
+    <section
+      id="testimonios"
+      className="scroll-mt-24 bg-white relative py-24 px-4 text-gray-900"
+    >
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-6">Lo que dicen de nosotros</h2>
 
@@ -34,8 +37,12 @@ function Testimonios() {
               alt={current.nombre}
               className="w-20 h-20 rounded-full mb-4 object-cover border-4 border-white shadow-md mx-auto"
             />
-            <p className="text-lg italic mb-4 text-gray-700 leading-relaxed">“{current.texto}”</p>
-            <h4 className="text-sm font-semibold text-rose-600">— {current.nombre}</h4>
+            <p className="text-lg italic mb-4 text-gray-700 leading-relaxed">
+              “{current.texto}”
+            </p>
+            <h4 className="text-sm font-semibold text-rose-600">
+              — {current.nombre}
+            </h4>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -55,7 +62,6 @@ function Testimonios() {
         <rect width="100%" height="100%" fill="url(#dots)" />
       </svg>
     </section>
-
   );
 }
 

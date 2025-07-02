@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 export default function ProductModal({ product, onClose }) {
   return (
@@ -21,7 +22,9 @@ export default function ProductModal({ product, onClose }) {
           alt={product.name}
           className="w-full h-64 object-cover rounded-md mb-4"
         />
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          {product.name}
+        </h2>
         <p className="text-sm text-gray-600 mb-2">{product.scent}</p>
         <p className="text-gray-700 mb-4">{product.description}</p>
         <p className="text-lg font-bold text-gray-900">{product.price}</p>
@@ -29,3 +32,16 @@ export default function ProductModal({ product, onClose }) {
     </div>
   );
 }
+
+ProductModal.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    scent: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    color: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
+};

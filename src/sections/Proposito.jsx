@@ -5,19 +5,20 @@ function Proposito() {
   const pilares = [
     {
       icono: <FaLeaf className="text-3xl text-rose-600 mb-3" />,
-      titulo: "Sostenibilidad",
-      texto: "Creamos soluciones con impacto positivo y duradero en el planeta."
+      titulo: 'Sostenibilidad',
+      texto:
+        'Creamos soluciones con impacto positivo y duradero en el planeta.',
     },
     {
       icono: <FaLightbulb className="text-3xl text-rose-600 mb-3" />,
-      titulo: "Inspiración",
-      texto: "Diseñamos experiencias que conectan con emociones auténticas."
+      titulo: 'Inspiración',
+      texto: 'Diseñamos experiencias que conectan con emociones auténticas.',
     },
     {
       icono: <FaHandsHelping className="text-3xl text-rose-600 mb-3" />,
-      titulo: "Comunidad",
-      texto: "Creemos en crecer junto a quienes confían en nosotros."
-    }
+      titulo: 'Comunidad',
+      texto: 'Creemos en crecer junto a quienes confían en nosotros.',
+    },
   ];
 
   return (

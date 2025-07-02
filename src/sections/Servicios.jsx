@@ -1,14 +1,26 @@
 import { motion } from 'framer-motion';
 
 const servicios = [
-  { titulo: 'Eficiencia energética', descripcion: 'Optimizamos recursos y reducimos tu huella energética.' },
-  { titulo: 'Instalaciones solares', descripcion: 'Soluciones limpias y sostenibles para tu empresa o hogar.' },
-  { titulo: 'Asesoría técnica', descripcion: 'Te guiamos en cada paso hacia un futuro más brillante.' },
+  {
+    titulo: 'Eficiencia energética',
+    descripcion: 'Optimizamos recursos y reducimos tu huella energética.',
+  },
+  {
+    titulo: 'Instalaciones solares',
+    descripcion: 'Soluciones limpias y sostenibles para tu empresa o hogar.',
+  },
+  {
+    titulo: 'Asesoría técnica',
+    descripcion: 'Te guiamos en cada paso hacia un futuro más brillante.',
+  },
 ];
 
 function Servicios() {
   return (
-    <section id="servicios" className="scroll-mt-24 bg-gray-100 py-20 px-4 text-gray-900">
+    <section
+      id="servicios"
+      className="scroll-mt-24 bg-gray-100 py-20 px-4 text-gray-900"
+    >
       <div className="max-w-5xl mx-auto text-center mb-12">
         <h2 className="text-4xl font-bold mb-4">Nuestros Servicios</h2>
         <p className="text-lg text-gray-600">

@@ -11,9 +11,12 @@ function CierreCTA() {
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
-      <h2 className="text-4xl font-extrabold mb-6">¿Listo para encender tu próxima idea?</h2>
+      <h2 className="text-4xl font-extrabold mb-6">
+        ¿Listo para encender tu próxima idea?
+      </h2>
       <p className="text-lg mb-8 max-w-xl mx-auto">
-        Creamos más que velas. Creamos momentos, mensajes y energía que transforma.
+        Creamos más que velas. Creamos momentos, mensajes y energía que
+        transforma.
       </p>
 
       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

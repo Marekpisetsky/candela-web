@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 import { CheckCircle } from 'lucide-react'; // asegúrate de tener lucide-react instalado
 
 function Gracias({ onClose }) {
@@ -33,3 +34,7 @@ function Gracias({ onClose }) {
 }
 
 export default Gracias;
+
+Gracias.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};

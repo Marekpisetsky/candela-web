@@ -1,39 +1,41 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Gracias from "../componentes/Gracias";
+import Gracias from '../componentes/Gracias';
 
 function Contacto() {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
-    mensaje: ''
+    mensaje: '',
   });
   const [enviado, setEnviado] = useState(false);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(import.meta.env.VITE_FORMSPREE_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     });
     if (response.ok) {
       setEnviado(true);
       setFormData({ nombre: '', email: '', mensaje: '' });
     } else {
-      alert("Hubo un error ❌, intenta más tarde.");
+      alert('Hubo un error ❌, intenta más tarde.');
     }
   };
 
   return (
     <>
       {enviado && <Gracias onClose={() => setEnviado(false)} />}
-      <section id="contacto" 
-      className="scroll-mt-24 bg-white py-16 md:py-24 px-6 text-gray-900">
+      <section
+        id="contacto"
+        className="scroll-mt-24 bg-white py-16 md:py-24 px-6 text-gray-900"
+      >
         <div className="max-w-6xl mx-auto flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-12 md:items-start">
           {/* Texto lateral */}
           <motion.div
@@ -45,8 +47,8 @@ function Contacto() {
           >
             <h2 className="text-4xl font-bold mb-6">Hablemos</h2>
             <p className="text-lg text-gray-600">
-              ¿Tienes un proyecto o una idea en mente?  
-              Cuéntanos cómo podemos ayudarte.
+              ¿Tienes un proyecto o una idea en mente? Cuéntanos cómo podemos
+              ayudarte.
             </p>
             <p className="mt-4 text-sm text-gray-400">
               Responderemos en menos de 24h.
