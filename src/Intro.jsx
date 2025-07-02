@@ -13,7 +13,6 @@ function Intro({ onFinish }) {
     const logoDelay = setTimeout(() => setShowLogo(true), 2400);
 
     const hideDelay = setTimeout(() => {
-      console.log("✅ Intro terminada, ejecutando onFinish()");
       setIsVisible(false);
       if (typeof onFinish === "function") {
         onFinish();
