@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
 
 function Hero() {
   return (
@@ -20,13 +21,17 @@ function Hero() {
           <p className="text-lg md:text-xl mb-8 text-gray-700 max-w-md">
             En Candela creemos en el poder de lo simple, lo claro y lo brillante.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300"
-          >
-            Conócenos
-          </motion.button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="nosotros"
+              smooth={true}
+              duration={500}
+              offset={-50}
+              className="inline-block bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 cursor-pointer"
+            >
+              Conócenos
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Imagen o logo */}
