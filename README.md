@@ -45,10 +45,12 @@ npm run dev
 
 ### Variables de entorno
 
-Crea un archivo `.env` en la raíz del proyecto definiendo la URL de tu formulario de Formspree:
+Utiliza el archivo de ejemplo `.env.example`. Cópialo como `.env` y reemplaza el valor con la URL de tu formulario de Formspree:
 
 ```bash
-VITE_FORMSPREE_URL=https://formspree.io/f/mvgrrqzb
+cp .env.example .env
+# Edita .env y asigna tu URL real
+VITE_FORMSPREE_URL=https://formspree.io/tu-endpoint
 ```
 
 
