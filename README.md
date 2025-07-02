@@ -50,3 +50,8 @@ Crea un archivo `.env` en la raíz del proyecto definiendo la URL de tu formular
 ```bash
 VITE_FORMSPREE_URL=https://formspree.io/f/mvgrrqzb
 ```
+
+
+### Despliegue
+
+Ejecuta `npm run build` para obtener los archivos optimizados en la carpeta `dist`. Luego sirve esa carpeta con tu plataforma de hosting estático favorita.
