@@ -41,3 +41,12 @@ git clone https://github.com/Marekpisetsky/candela-web.git
 cd candela-web
 npm install
 npm run dev
+```
+
+### Variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto definiendo la URL de tu formulario de Formspree:
+
+```bash
+VITE_FORMSPREE_URL=https://formspree.io/f/mvgrrqzb
+```
