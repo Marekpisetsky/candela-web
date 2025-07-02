@@ -55,3 +55,7 @@ VITE_FORMSPREE_URL=https://formspree.io/f/mvgrrqzb
 ### Despliegue
 
 Ejecuta `npm run build` para obtener los archivos optimizados en la carpeta `dist`. Luego sirve esa carpeta con tu plataforma de hosting estático favorita.
+
+## 📄 Licencia
+
+Este proyecto esta bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para mas informacion.
