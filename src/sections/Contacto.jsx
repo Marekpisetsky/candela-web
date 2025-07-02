@@ -16,7 +16,7 @@ function Contacto() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const response = await fetch("https://formspree.io/f/mvgrrqzb", {
+    const response = await fetch(import.meta.env.VITE_FORMSPREE_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
