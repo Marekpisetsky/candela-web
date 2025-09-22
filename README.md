@@ -61,3 +61,7 @@ Ejecuta `npm run build` para obtener los archivos optimizados en la carpeta `dis
 ## 📄 Licencia
 
 Este proyecto esta bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para mas informacion.
+
+## ✅ Cambios críticos
+
+- `src/componentes/ScrollToTopButton.jsx` ya utiliza la extensión `.jsx` correcta y no requiere ser renombrado.
