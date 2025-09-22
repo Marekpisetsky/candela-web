@@ -65,3 +65,4 @@ Este proyecto esta bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) 
 ## ✅ Cambios críticos
 
 - `src/componentes/ScrollToTopButton.jsx` ya utiliza la extensión `.jsx` correcta y no requiere ser renombrado.
+- El proyecto ya cuenta con el archivo de configuración `.prettierrc`, por lo que no es necesario renombrar ningún supuesto `.prettienc`.
