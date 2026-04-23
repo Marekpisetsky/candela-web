@@ -1,19 +1,25 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { testimonios } from '../data/Testimonios';
+import { useLanguage } from '../context/LanguageContext';
 
 function Testimonios() {
   const [index, setIndex] = useState(0);
+  const { copy, language } = useLanguage();
+  const testimonials = copy.testimonials.items;
 
   useEffect(() => {
-    const intervalo = setInterval(() => {
-      setIndex((prev) => (prev + 1) % testimonios.length);
+    setIndex(0);
+  }, [language]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % testimonials.length);
     }, 4000);
 
-    return () => clearInterval(intervalo);
-  }, []);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
-  const current = testimonios[index];
+  const current = testimonials[index];
 
   return (
     <section
@@ -21,11 +27,11 @@ function Testimonios() {
       className="scroll-mt-24 bg-white relative py-24 px-4 text-gray-900"
     >
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">Lo que dicen de nosotros</h2>
+        <h2 className="text-4xl font-bold mb-6">{copy.testimonials.title}</h2>
 
         <AnimatePresence mode="wait">
           <motion.div
-            key={index}
+            key={`${language}-${index}`}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -40 }}
@@ -34,20 +40,19 @@ function Testimonios() {
           >
             <img
               src={current.avatar}
-              alt={current.nombre}
+              alt={current.name}
               className="w-20 h-20 rounded-full mb-4 object-cover border-4 border-white shadow-md mx-auto"
             />
             <p className="text-lg italic mb-4 text-gray-700 leading-relaxed">
-              “{current.texto}”
+              "{current.text}"
             </p>
             <h4 className="text-sm font-semibold text-rose-600">
-              — {current.nombre}
+              - {current.name}
             </h4>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Patrón decorativo suave en fondo */}
       <svg
         className="absolute bottom-0 left-0 w-full h-24 opacity-5"
         xmlns="http://www.w3.org/2000/svg"

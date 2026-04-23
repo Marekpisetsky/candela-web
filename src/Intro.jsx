@@ -35,33 +35,35 @@ function Intro({ onFinish }) {
           transition={{ duration: 1 }}
           className="fixed inset-0 glitch-bg flex flex-col items-center justify-center z-50 bg-black"
         >
-          <motion.div className="flex space-x-2 text-white text-5xl font-extrabold tracking-widest mb-4">
-            {letras.map((letra, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.3 }}
+          <div className="flex flex-col items-center gap-4">
+            {showLogo && (
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: [0, 1.2, 1], opacity: 1 }}
+                transition={{ duration: 1 }}
               >
-                {letra}
-              </motion.span>
-            ))}
-          </motion.div>
+                <img
+                  src={logo}
+                  alt="Logo Candela"
+                  className="w-20 h-20"
+                  style={{ filter: 'invert(1)' }}
+                />
+              </motion.div>
+            )}
 
-          {showLogo && (
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: [0, 1.2, 1], opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <img
-                src={logo}
-                alt="Logo Candela"
-                className="w-20 h-20"
-                style={{ filter: 'invert(1)' }}
-              />
+            <motion.div className="flex space-x-2 text-white text-5xl font-extrabold tracking-widest">
+              {letras.map((letra, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.3 }}
+                >
+                  {letra}
+                </motion.span>
+              ))}
             </motion.div>
-          )}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

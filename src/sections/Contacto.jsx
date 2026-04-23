@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Gracias from '../componentes/Gracias';
+import { useLanguage } from '../context/LanguageContext';
 
 function Contacto() {
+  const { copy } = useLanguage();
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -10,23 +12,25 @@ function Contacto() {
   });
   const [enviado, setEnviado] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const response = await fetch(import.meta.env.VITE_FORMSPREE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     });
+
     if (response.ok) {
       setEnviado(true);
       setFormData({ nombre: '', email: '', mensaje: '' });
-    } else {
-      alert('Hubo un error ❌, intenta más tarde.');
+      return;
     }
+
+    alert(copy.contact.error);
   };
 
   return (
@@ -37,7 +41,6 @@ function Contacto() {
         className="scroll-mt-24 bg-white py-16 md:py-24 px-6 text-gray-900"
       >
         <div className="max-w-6xl mx-auto flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-12 md:items-start">
-          {/* Texto lateral */}
           <motion.div
             className="text-center md:text-left"
             initial={{ opacity: 0, x: -40 }}
@@ -45,17 +48,11 @@ function Contacto() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-bold mb-6">Hablemos</h2>
-            <p className="text-lg text-gray-600">
-              ¿Tienes un proyecto o una idea en mente? Cuéntanos cómo podemos
-              ayudarte.
-            </p>
-            <p className="mt-4 text-sm text-gray-400">
-              Responderemos en menos de 24h.
-            </p>
+            <h2 className="text-4xl font-bold mb-6">{copy.contact.title}</h2>
+            <p className="text-lg text-gray-600">{copy.contact.intro}</p>
+            <p className="mt-4 text-sm text-gray-400">{copy.contact.responseTime}</p>
           </motion.div>
 
-          {/* Formulario */}
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 40 }}
@@ -69,7 +66,7 @@ function Contacto() {
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
-              placeholder="Tu nombre"
+              placeholder={copy.contact.placeholders.name}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
             />
@@ -78,7 +75,7 @@ function Contacto() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Tu correo"
+              placeholder={copy.contact.placeholders.email}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
             />
@@ -86,7 +83,7 @@ function Contacto() {
               name="mensaje"
               value={formData.mensaje}
               onChange={handleChange}
-              placeholder="Escribe tu mensaje..."
+              placeholder={copy.contact.placeholders.message}
               rows="5"
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
@@ -95,7 +92,7 @@ function Contacto() {
               type="submit"
               className="w-full text-center md:w-auto bg-rose-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-rose-700 transition"
             >
-              Enviar mensaje
+              {copy.contact.submit}
             </button>
           </motion.form>
         </div>

@@ -1,14 +1,16 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { useLanguage } from '../context/LanguageContext';
 
 function Hero() {
+  const { copy } = useLanguage();
+
   return (
     <section
       id="inicio"
       className="scroll-mt-24 bg-gradient-to-br from-white via-rose-50 to-rose-100 py-20 md:py-32 px-6 text-gray-900 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* Texto */}
         <motion.div
           className="md:w-1/2 text-center md:text-left"
           initial={{ opacity: 0, x: -50 }}
@@ -16,13 +18,16 @@ function Hero() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-            Energía que transforma.
+            {copy.hero.title}
           </h1>
           <p className="text-lg md:text-xl mb-8 text-gray-700 max-w-md">
-            En Candela creemos en el poder de lo simple, lo claro y lo
-            brillante.
+            {copy.hero.body}
           </p>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.div
+            className="inline-block"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Link
               to="nosotros"
               smooth={true}
@@ -30,12 +35,11 @@ function Hero() {
               offset={-50}
               className="inline-block bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 cursor-pointer"
             >
-              Conócenos
+              {copy.hero.cta}
             </Link>
           </motion.div>
         </motion.div>
 
-        {/* Imagen o logo */}
         <motion.div
           className="md:w-1/2 flex justify-center"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -44,7 +48,8 @@ function Hero() {
         >
           <img
             src="/logo-candela-rosa.png"
-            alt="Candela Logo"
+            alt={copy.hero.logoAlt}
+            draggable="false"
             className="w-52 md:w-72 drop-shadow-xl"
           />
         </motion.div>

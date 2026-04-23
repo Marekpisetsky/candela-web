@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { useLanguage } from '../context/LanguageContext';
 
 function CierreCTA() {
+  const { copy } = useLanguage();
+
   return (
     <motion.section
       id="cta"
@@ -11,15 +14,14 @@ function CierreCTA() {
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
     >
-      <h2 className="text-4xl font-extrabold mb-6">
-        ¿Listo para encender tu próxima idea?
-      </h2>
-      <p className="text-lg mb-8 max-w-xl mx-auto">
-        Creamos más que velas. Creamos momentos, mensajes y energía que
-        transforma.
-      </p>
+      <h2 className="text-4xl font-extrabold mb-6">{copy.cta.title}</h2>
+      <p className="text-lg mb-8 max-w-xl mx-auto">{copy.cta.body}</p>
 
-      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      <motion.div
+        className="inline-block"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
         <Link
           to="contacto"
           smooth={true}
@@ -27,7 +29,7 @@ function CierreCTA() {
           offset={-50}
           className="inline-block bg-white text-rose-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition cursor-pointer"
         >
-          Hablemos
+          {copy.cta.button}
         </Link>
       </motion.div>
     </motion.section>

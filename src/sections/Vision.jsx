@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { FaRegLightbulb } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 function Vision() {
+  const { copy } = useLanguage();
+
   return (
     <motion.section
       id="vision"
@@ -21,11 +24,11 @@ function Vision() {
         <FaRegLightbulb className="text-3xl" />
       </motion.div>
 
-      <h2 className="text-4xl font-bold mb-4">Nuestra Visión</h2>
+      <h2 className="text-4xl font-bold mb-4">{copy.vision.title}</h2>
       <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-        Iluminar hogares, inspirar decisiones y construir futuro con cada vela.
+        {copy.vision.line1}
         <br />
-        Encendemos ideas que brillan, duran y dejan huella.
+        {copy.vision.line2}
       </p>
     </motion.section>
   );

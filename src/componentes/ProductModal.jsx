@@ -12,10 +12,12 @@ export default function ProductModal({ product, onClose }) {
         transition={{ duration: 0.3 }}
       >
         <button
+          type="button"
+          aria-label="Close"
           className="absolute top-2 right-3 text-gray-500 hover:text-gray-800"
           onClick={onClose}
         >
-          ✕
+          ×
         </button>
         <img
           src={product.image}

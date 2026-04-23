@@ -1,24 +1,14 @@
 import { motion } from 'framer-motion';
 import { FaLeaf, FaLightbulb, FaHandsHelping } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 function Proposito() {
-  const pilares = [
-    {
-      icono: <FaLeaf className="text-3xl text-rose-600 mb-3" />,
-      titulo: 'Sostenibilidad',
-      texto:
-        'Creamos soluciones con impacto positivo y duradero en el planeta.',
-    },
-    {
-      icono: <FaLightbulb className="text-3xl text-rose-600 mb-3" />,
-      titulo: 'Inspiración',
-      texto: 'Diseñamos experiencias que conectan con emociones auténticas.',
-    },
-    {
-      icono: <FaHandsHelping className="text-3xl text-rose-600 mb-3" />,
-      titulo: 'Comunidad',
-      texto: 'Creemos en crecer junto a quienes confían en nosotros.',
-    },
+  const { copy } = useLanguage();
+
+  const icons = [
+    <FaLeaf key="leaf" className="text-3xl text-rose-600 mb-3" />,
+    <FaLightbulb key="bulb" className="text-3xl text-rose-600 mb-3" />,
+    <FaHandsHelping key="hands" className="text-3xl text-rose-600 mb-3" />,
   ];
 
   return (
@@ -31,25 +21,23 @@ function Proposito() {
       transition={{ duration: 0.7 }}
     >
       <div className="max-w-5xl mx-auto text-center mb-14">
-        <h2 className="text-4xl font-bold mb-4">Nuestro Propósito</h2>
-        <p className="text-lg text-gray-600">
-          Lo que guía cada vela que encendemos, cada idea que iluminamos.
-        </p>
+        <h2 className="text-4xl font-bold mb-4">{copy.purpose.title}</h2>
+        <p className="text-lg text-gray-600">{copy.purpose.intro}</p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        {pilares.map((pilar, index) => (
+        {copy.purpose.items.map((item, index) => (
           <motion.div
-            key={index}
+            key={item.title}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2, duration: 0.5 }}
             viewport={{ once: true }}
             className="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-xl transition"
           >
-            {pilar.icono}
-            <h3 className="text-xl font-semibold mb-2">{pilar.titulo}</h3>
-            <p className="text-gray-700">{pilar.texto}</p>
+            {icons[index]}
+            <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+            <p className="text-gray-700">{item.text}</p>
           </motion.div>
         ))}
       </div>

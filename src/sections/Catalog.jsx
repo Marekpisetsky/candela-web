@@ -1,22 +1,30 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import ProductCard from '../componentes/ProductCard';
 import ProductModal from '../componentes/ProductModal';
-import { products } from '../data/products';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Catalog() {
-  const [selectedScent, setSelectedScent] = useState('Todos');
+  const { copy, language } = useLanguage();
+  const [selectedScent, setSelectedScent] = useState('all');
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const uniqueScents = [
-    'Todos',
-    ...Array.from(new Set(products.map((p) => p.scent))),
-  ];
+  const scentLabels = copy.catalog.filters;
+  const products = copy.catalog.products;
+
+  const uniqueScents = useMemo(
+    () => ['all', ...Array.from(new Set(products.map((product) => product.scentKey)))],
+    [products]
+  );
 
   const filteredProducts =
-    selectedScent === 'Todos'
+    selectedScent === 'all'
       ? products
-      : products.filter((p) => p.scent === selectedScent);
+      : products.filter((product) => product.scentKey === selectedScent);
+
+  const localizedProduct =
+    selectedProduct &&
+    products.find((product) => product.id === selectedProduct.id);
 
   return (
     <motion.section
@@ -34,7 +42,7 @@ export default function Catalog() {
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.1 }}
       >
-        Nuestro Catálogo
+        {copy.catalog.title}
       </motion.h2>
 
       <motion.div
@@ -44,18 +52,18 @@ export default function Catalog() {
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.2 }}
       >
-        {uniqueScents.map((scent) => (
+        {uniqueScents.map((scentKey) => (
           <button
-            key={scent}
-            onClick={() => setSelectedScent(scent)}
-            className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors duration-200
-              ${
-                selectedScent === scent
-                  ? 'bg-gray-800 text-white border-gray-800'
-                  : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'
-              }`}
+            key={`${language}-${scentKey}`}
+            type="button"
+            onClick={() => setSelectedScent(scentKey)}
+            className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors duration-200 ${
+              selectedScent === scentKey
+                ? 'bg-gray-800 text-white border-gray-800'
+                : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'
+            }`}
           >
-            {scent}
+            {scentLabels[scentKey]}
           </button>
         ))}
       </motion.div>
@@ -69,16 +77,22 @@ export default function Catalog() {
       >
         {filteredProducts.map((product) => (
           <ProductCard
-            key={product.id}
-            product={product}
+            key={`${language}-${product.id}`}
+            product={{
+              ...product,
+              scent: scentLabels[product.scentKey],
+            }}
             onClick={setSelectedProduct}
           />
         ))}
       </motion.div>
 
-      {selectedProduct && (
+      {localizedProduct && (
         <ProductModal
-          product={selectedProduct}
+          product={{
+            ...localizedProduct,
+            scent: scentLabels[localizedProduct.scentKey],
+          }}
           onClose={() => setSelectedProduct(null)}
         />
       )}
